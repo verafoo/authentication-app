@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.ant-input-affix-wrapper {
+  border: 1 px solid #bdbdbd !important;
+  border-radius: 8px !important;
+}
