@@ -29,15 +29,19 @@ const Login: NextPage = () => {
           <div className={styles["login-card-info"]}>
             {isRegister ? (
               <>
-                <Image src={devchallengesSvg} alt="devchallenges" />
-                <p>Join thousands of learners from around the world</p>
-                <p>
+                <div className={styles["login-card-info-logo"]}>
+                  <Image src={devchallengesSvg} alt="devchallenges" />
+                </div>
+                <p className={styles["login-card-info-title"]}>
+                  Join thousands of learners from around the world
+                </p>
+                <p className={styles["login-card-info-tips"]}>
                   Master web development by making real-life projects. There are
                   multiple paths for you to choose
                 </p>
               </>
             ) : (
-              <p>Login</p>
+              <p className={styles["login-card-info-title"]}>Login</p>
             )}
           </div>
 
@@ -55,8 +59,8 @@ const Login: NextPage = () => {
                 ]}
               >
                 <Input
-                  placeholder="email"
-                  prefix={<MailFilled className="site-form-item-icon" />}
+                  placeholder="Email"
+                  prefix={<MailFilled className={styles["login-form-icon"]} />}
                 />
               </Form.Item>
 
@@ -67,32 +71,32 @@ const Login: NextPage = () => {
                 ]}
               >
                 <Input.Password
-                  placeholder="password"
-                  prefix={<LockFilled className="site-form-item-icon" />}
+                  placeholder="Password"
+                  prefix={<LockFilled className={styles["login-form-icon"]} />}
                 />
               </Form.Item>
 
               <Form.Item>
-                <Button type="primary" htmlType="submit">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  className={styles["login-form-button"]}
+                >
                   {isRegister ? "Start coding now" : "Login"}
                 </Button>
               </Form.Item>
             </Form>
           </div>
 
-          <div className="login">
+          <div className={styles["login-with-platform"]}>
             <p>or continue with these social profile</p>
-            <div className="circle-icon">
-              <GoogleOutlined />
-            </div>
-            <div className="circle-icon">
-              <FacebookOutlined />
-            </div>
-            <div className="circle-icon">
-              <TwitterOutlined />
-            </div>
-            <div className="circle-icon">
-              <GithubOutlined />
+            <div className={styles["login-with-platform-logo-wrapper"]}>
+              <GoogleOutlined className={styles["login-with-platform-logo"]} />
+              <FacebookOutlined
+                className={styles["login-with-platform-logo"]}
+              />
+              <TwitterOutlined className={styles["login-with-platform-logo"]} />
+              <GithubOutlined className={styles["login-with-platform-logo"]} />
             </div>
 
             {isRegister ? (
@@ -107,11 +111,9 @@ const Login: NextPage = () => {
           </div>
         </div>
       </Card>
-      <div className="login-creator-info">
-        <p>
-          <span>created by verafoo</span>
-          <span>devChallenges.io</span>
-        </p>
+      <div className={styles["login-creator-info"]}>
+        <p>created by verafoo</p>
+        <p>devChallenges.io</p>
       </div>
     </div>
   );
