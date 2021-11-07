@@ -3,6 +3,7 @@ import { Card, Form, Input, Button, Checkbox } from "antd";
 import Image from "next/image";
 import { useState } from "react";
 import styles from "../../styles/login.module.css";
+import { User } from "../utils/types";
 import {
   MailFilled,
   LockFilled,
@@ -15,8 +16,21 @@ const devchallengesSvg = require("../../public/devchallenges.svg");
 
 const Login: NextPage = () => {
   const [isRegister, setIsRegister] = useState(true);
+  const [loginOrRegisterForm] = Form.useForm();
+
+  const createNewUser = async (params: User) => {
+    await fetch("http://localhost:3000/api/user", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params),
+    });
+  };
+
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    const params = loginOrRegisterForm.getFieldsValue();
+    createNewUser(params);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -47,7 +61,8 @@ const Login: NextPage = () => {
 
           <div className={styles["login-card-register-form"]}>
             <Form
-              name="basic"
+              name="loginOrRegisterForm"
+              form={loginOrRegisterForm}
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete="off"

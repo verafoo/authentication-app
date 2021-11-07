@@ -12,3 +12,8 @@ export interface Todo {
   item: string;
   completed: boolean;
 }
+
+export interface User {
+  email: String;
+  password: String;
+}

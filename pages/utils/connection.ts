@@ -20,5 +20,12 @@ export const connect = async () => {
   // OUR TODO MODEL
   const Todo = mongoose.models.Todo || mongoose.model("Todo", TodoSchema);
 
-  return { conn, Todo };
+  const UserSchema = new mongoose.Schema({
+    email: String,
+    password: String,
+  });
+
+  const User = mongoose.models.User || mongoose.model("User", UserSchema);
+
+  return { conn, Todo, User };
 };
