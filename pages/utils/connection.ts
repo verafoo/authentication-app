@@ -1,5 +1,7 @@
 //IMPORT MONGOOSE
 import mongoose, { Model } from "mongoose";
+require("mongoose-type-email");
+mongoose.SchemaTypes.Email.defaults.message = "Email address is invalid";
 
 // CONNECTING TO MONGOOSE (Get Database Url from .env.local)
 const { DATABASE_URL } = process.env;
@@ -21,7 +23,7 @@ export const connect = async () => {
   const Todo = mongoose.models.Todo || mongoose.model("Todo", TodoSchema);
 
   const UserSchema = new mongoose.Schema({
-    email: String,
+    email: mongoose.SchemaTypes.Email,
     password: String,
   });
 

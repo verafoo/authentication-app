@@ -19,18 +19,23 @@ const Login: NextPage = () => {
   const [loginOrRegisterForm] = Form.useForm();
 
   const createNewUser = async (params: User) => {
-    await fetch("http://localhost:3000/api/user", {
+    await fetch("http://localhost:3000/api/user/login", {
       method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      body: JSON.stringify(params),
+    });
+  };
+
+  const checkUser = async (params: User) => {
+    await fetch("http://localhost:3000/api/user/authoritarian", {
+      method: "post",
       body: JSON.stringify(params),
     });
   };
 
   const onFinish = (values: any) => {
     const params = loginOrRegisterForm.getFieldsValue();
-    createNewUser(params);
+    if (isRegister) return createNewUser(params);
+    return checkUser(params);
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -38,7 +43,7 @@ const Login: NextPage = () => {
   };
   return (
     <div className={styles["login-main-content"]}>
-      <Card className={styles["login-card"]}>
+      <Card>
         <div className={styles["login-card-content"]}>
           <div className={styles["login-card-info"]}>
             {isRegister ? (
@@ -116,11 +121,23 @@ const Login: NextPage = () => {
 
             {isRegister ? (
               <p>
-                Adready a member? <a href="#">Login</a>
+                Adready a member?
+                <span
+                  className={styles["login-jump-to-component"]}
+                  onClick={() => setIsRegister(false)}
+                >
+                  Login
+                </span>
               </p>
             ) : (
               <p>
-                Don’t have an account yet? <a href="#">Register</a>
+                Don’t have an account yet?
+                <span
+                  className={styles["login-jump-to-component"]}
+                  onClick={() => setIsRegister(true)}
+                >
+                  Register
+                </span>
               </p>
             )}
           </div>

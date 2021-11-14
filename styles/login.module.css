@@ -3,11 +3,6 @@
   color: #333;
 }
 
-.login-card {
-  border: 1px solid #bdbdbd;
-  border-radius: 24px;
-}
-
 .login-card-content {
   margin: 3.625rem 3rem;
 }
@@ -40,10 +35,15 @@
   font-size: 16px;
 }
 
-.login-with-platform p {
+.login-with-platform {
   font-size: 14px;
   color: #828282;
   text-align: center;
+}
+
+.login-jump-to-component {
+  color: #2f80ed;
+  cursor: pointer;
 }
 
 .login-with-platform-logo-wrapper {

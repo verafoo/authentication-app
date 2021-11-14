@@ -46,3 +46,8 @@ p {
 .ant-btn-primary {
   background-color: #2f80ed !important;
 }
+
+.ant-card {
+  border: 1px solid #bdbdbd !important;
+  border-radius: 24px !important;
+}
